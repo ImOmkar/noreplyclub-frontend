@@ -16,7 +16,7 @@ export default function Hero({ onOpenModal }) {
         </p>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold ">
           They said{" "}
           <span className="text-red-500">“we’ll get back to you”</span>.
           <br />
@@ -32,7 +32,7 @@ export default function Hero({ onOpenModal }) {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             onClick={onOpenModal}
-            className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg rounded-xl shadow-lg"
+            className="bg-[#AC1111] hover:bg-[#860E0E] text-white px-8 py-6 text-lg rounded-xl shadow-lg"
           >
             Tell your story
           </Button>
