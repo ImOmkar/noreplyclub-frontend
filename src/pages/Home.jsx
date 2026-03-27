@@ -48,16 +48,16 @@ export default function Home() {
   //   }, 0);
   // }, []);
 
-  const StoryWall = lazy(() => import("../components/StoryWall"));
-  const Stats = lazy(() => import("../components/Stats"));
+  // const StoryWall = lazy(() => import("../components/StoryWall"));
+  // const Stats = lazy(() => import("../components/Stats"));
 
   return (
     <div>
       <Hero onOpenModal={() => setOpen(true)} />
-      <Suspense fallback={null}>
-        <StoryWall stories={stories} onLoadMore={() => fetchStories()} loading={loading} total={total} />
-        <Stats />
-      </Suspense>
+      {/* <Suspense fallback={null}> */}
+      <StoryWall stories={stories} onLoadMore={() => fetchStories()} loading={loading} total={total} />
+      <Stats />
+      {/* </Suspense> */}
       <SubmitModal
         open={open}
         setOpen={setOpen}
