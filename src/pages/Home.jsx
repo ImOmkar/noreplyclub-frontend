@@ -38,15 +38,15 @@ export default function Home() {
     }
   };
 
-  // useEffect(() => {
-  //   fetchStories(true);
-  // }, []);
-
   useEffect(() => {
-    setTimeout(() => {
-      fetchStories();
-    }, 0);
+    fetchStories(true);
   }, []);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     fetchStories();
+  //   }, 0);
+  // }, []);
 
   const StoryWall = lazy(() => import("../components/StoryWall"));
   const Stats = lazy(() => import("../components/Stats"));
