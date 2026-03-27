@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<main><Home /></main>} />
 
         {/* 🔥 Catch all route */}
         <Route path="*" element={<NotFound />} />

@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import API from "../lib/api";
 
 export default function StoryWall({ stories, onLoadMore, total, loading }) {
 

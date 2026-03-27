@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import Hero from "../components/Hero";
 import StoryWall from "../components/StoryWall";
 import Stats from "../components/Stats";
@@ -38,15 +38,26 @@ export default function Home() {
     }
   };
 
+  // useEffect(() => {
+  //   fetchStories(true);
+  // }, []);
+
   useEffect(() => {
-    fetchStories(true);
+    setTimeout(() => {
+      fetchStories();
+    }, 0);
   }, []);
+
+  const StoryWall = lazy(() => import("../components/StoryWall"));
+  const Stats = lazy(() => import("../components/Stats"));
 
   return (
     <div>
       <Hero onOpenModal={() => setOpen(true)} />
-      <StoryWall stories={stories} onLoadMore={() => fetchStories()} loading={loading} total={total} />
-      <Stats />
+      <Suspense fallback={null}>
+        <StoryWall stories={stories} onLoadMore={() => fetchStories()} loading={loading} total={total} />
+        <Stats />
+      </Suspense>
       <SubmitModal
         open={open}
         setOpen={setOpen}
