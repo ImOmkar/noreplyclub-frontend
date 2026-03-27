@@ -42,22 +42,12 @@ export default function Home() {
     fetchStories(true);
   }, []);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     fetchStories();
-  //   }, 0);
-  // }, []);
-
-  // const StoryWall = lazy(() => import("../components/StoryWall"));
-  // const Stats = lazy(() => import("../components/Stats"));
 
   return (
     <div>
       <Hero onOpenModal={() => setOpen(true)} />
-      {/* <Suspense fallback={null}> */}
       <StoryWall stories={stories} onLoadMore={() => fetchStories()} loading={loading} total={total} />
       <Stats />
-      {/* </Suspense> */}
       <SubmitModal
         open={open}
         setOpen={setOpen}
