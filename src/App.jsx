@@ -14,9 +14,8 @@ function App() {
         <Route path="/ghosted-after-interview" element={<GhostedInterview />} />
         <Route path="/no-response-after-interview" element={<NoResponse />} />
 
-        {/* 🔥 Catch all route */}
+        {/* Catch all route */}
         <Route path="*" element={<NotFound />} />
-
 
       </Routes>
 
