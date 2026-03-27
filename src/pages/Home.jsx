@@ -4,14 +4,19 @@ import StoryWall from "../components/StoryWall";
 import Stats from "../components/Stats";
 import SubmitModal from "../components/SubmitModal";
 import API from "../lib/api";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
+  const location = useLocation();
+
   const [open, setOpen] = useState(false);
   const [stories, setStories] = useState([]);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(false)
   const LIMIT = 5;
+
+
   
   const fetchStories = async (reset = false) => {
     setLoading(true)
@@ -38,10 +43,20 @@ export default function Home() {
     }
   };
 
+
+
   useEffect(() => {
     fetchStories(true);
   }, []);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("openModal") === "true") {
+      setOpen(true)
+      // remove query param after opening
+      window.history.replaceState({}, document.title, "/")
+    }
+  }, [location.search]);
 
   return (
     <div>

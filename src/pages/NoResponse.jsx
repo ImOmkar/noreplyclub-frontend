@@ -24,7 +24,7 @@ export default function NoResponse() {
 
             <div className="mt-10">
                 <Button
-                    onClick={() => window.location.href = "/"}
+                    onClick={() => window.location.href = "/?openModal=true"}
                     className="bg-red-500 hover:bg-red-600 px-8 py-6 text-lg rounded-xl"
                 >
                     Tell your story
