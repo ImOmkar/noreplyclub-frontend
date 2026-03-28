@@ -20,6 +20,7 @@ export default function SubmitModal({ open, setOpen, onSuccess }) {
   });
 
   const [isMobile, setIsMobile] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // detect mobile
   useEffect(() => {
@@ -51,6 +52,10 @@ export default function SubmitModal({ open, setOpen, onSuccess }) {
   const prev = () => setStep((s) => s - 1);
 
   const handleSubmit = async () => {
+    if (loading) return;
+
+    setLoading(true)
+
     try {
       const res = await API.post("/report", form);
 
@@ -68,6 +73,8 @@ export default function SubmitModal({ open, setOpen, onSuccess }) {
       }, 1200);
     } catch (err) {
       toast.error("Something went wrong");
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -209,11 +216,14 @@ export default function SubmitModal({ open, setOpen, onSuccess }) {
               Back
             </Button>
             <Button
-              disabled={!form.story.trim() || form.story.length > 300}
-              className="w-full"
-              onClick={handleSubmit}
-            >
-              Submit
+              disabled={
+                loading || 
+                !form.story.trim() || 
+                form.story.length > 300
+              }
+              className="w-full disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={handleSubmit}>
+              {loading ? "⏳ Submitting..." : "Submit"}
             </Button>
           </div>
         </motion.div>
